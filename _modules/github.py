@@ -3,7 +3,7 @@ Tools for accessing github
 '''
 # Import python libs
 import sys
-from github3 import GitHub, models
+from github3 import GitHub, models, GitHubError
 import logging
 
 # Import salt libs
@@ -77,6 +77,6 @@ def add_key(keypath, title=None, user=None, password=None, token=None):
         else:
             log.error("Key addition for %s failed!" % title)
             return 'failed'
-    except models.GitHubError:
+    except GitHubError:
         log.error("Key addition for %s failed" % title)
         return 'failed'
